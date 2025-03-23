@@ -27,5 +27,5 @@ echo "Bonjour " . $nom;
 
 Route::get('nouvellepage','App\Http\Controllers\MonControleur@retourneNouvellePage');
 
-Route::get('exemple', 'App\Http\Controllers\MonControleur@retournePageExemple');
+Route::get('membrescss', 'App\Http\Controllers\MonControleur@retournemembrescss');
 Route::get('membres', 'App\Http\Controllers\ControleurMembres@index');

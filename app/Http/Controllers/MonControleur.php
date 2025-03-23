@@ -11,7 +11,7 @@ class MonControleur extends Controller
         return view('nouvellepage');
     }
 
-    public function retournePageExemple() {
+    public function retournemembrescss() {
         $nom = 'Picard';
         $prenom = 'Jean-Luc';
         return view('pages_site.ex', compact('nom', 'prenom'));
