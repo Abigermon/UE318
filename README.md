@@ -7,6 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## UE 318 Semaine 4 php artisan serve --host=127.0.0.1 --port=8080
+Les liens d'accès pour les vues sont : 
+http://127.0.0.1:8080/bonjour/toto
+http://127.0.0.1:8080/nouvellepage
+http://127.0.0.1:8080/membres
+http://127.0.0.1:8080/membrescss
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
