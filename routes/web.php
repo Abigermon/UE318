@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +18,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-echo '<h1>Bonjour !</h1>';
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/bonjour/{nom}', function ($nom) {
-echo "Bonjour " . $nom;
-});
+Route::get('membres', [ControleurMembres::class, 'index']);
+Route::get('membre/{numero}', [ControleurMembres::class, 'afficher']);
+Route::get('creer', [ControleurMembres::class, 'creer']);
+Route::post('creation/membre', [ControleurMembres::class, 'enregistrer']);
+Route::get('modifier/{id}', [ControleurMembres::class, 'editer']);
+Route::patch('miseAJour/{id}', [ControleurMembres::class, 'miseAJour']);
+Route::get('/identite','App\Http\Controllers\ControleurMembres@identite');
+Route::get('/protege','App\Http\Controllers\ControleurMembres@acces_protege')
+->middleware('auth');
 
-Route::get('nouvellepage','App\Http\Controllers\MonControleur@retourneNouvellePage');
-
-Route::get('membrescss', 'App\Http\Controllers\MonControleur@retournemembrescss');
-Route::get('membres', 'App\Http\Controllers\ControleurMembres@index');
+require __DIR__.'/auth.php';
