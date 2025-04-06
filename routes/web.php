@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('contact', [ContactController::class, 'create']);
+Route::post('contact', [ContactController::class, 'store']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+/*
 Route::get('membres', [ControleurMembres::class, 'index']);
 Route::get('membre/{numero}', [ControleurMembres::class, 'afficher']);
 Route::get('creer', [ControleurMembres::class, 'creer']);
@@ -37,5 +41,5 @@ Route::patch('miseAJour/{id}', [ControleurMembres::class, 'miseAJour']);
 Route::get('/identite','App\Http\Controllers\ControleurMembres@identite');
 Route::get('/protege','App\Http\Controllers\ControleurMembres@acces_protege')
 ->middleware('auth');
-
+*/
 require __DIR__.'/auth.php';
